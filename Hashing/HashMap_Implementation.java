@@ -104,6 +104,34 @@ public class HashMap_Implementation{
          return keys;
    }
 
+   public V remove(K key){
+     int bi = hashFunction(key);
+     int di = searchInLL(key,bi);
+     if(di == -1){
+          return null;
+     }
+     else{
+         Node node = buckets[bi].remove(di);
+         n--;
+         return node.value;
+     }
+   }
+
+   public boolean containsKey(K key){
+     int bi = hashFunction(key);
+     int di = searchInLL(key,bi);
+     if(di == -1){
+          return false;
+     }
+     else{
+          return true;
+     }  
+   }
+
+   public boolean isEmpty(){
+       return n == 0;
+   }
+
 }
 
 
@@ -120,5 +148,36 @@ public static void main(String[] args){
         for(int i = 0; i < keys.size() ; i++){
                System.out.println(keys.get(i) + " " + map.get(keys.get(i)));   
         }
+
+        map.remove(3);
+        System.out.println(map.get(3));
+
+        for(int i = 0; i < keys.size() ; i++){
+          System.out.println(keys.get(i) + " " + map.get(keys.get(i)));   
+   }
+
+        System.out.println(map.isEmpty());
+
+        if(map.containsKey(3)){
+               System.out.println("true");
+        }
+        else{
+          System.out.println("false");
+        }
+
+        if(map.containsKey(2)){
+          System.out.println("true");
+        }
+        else{
+          System.out.println("false");
+        }
+
+         System.out.println(map.hashCode());
+
+         for(int key : map.keySet()){
+          System.out.println(key);
+         }
+          
+
 }
 }
