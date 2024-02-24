@@ -14,7 +14,6 @@ public class HashMap_Implementation{
             }
          
 
-   @SuppressWarnings("unchecked")      
    private int n;                 // nodes
    private int N;                // buckets
    private LinkedList<Node> buckets[];
